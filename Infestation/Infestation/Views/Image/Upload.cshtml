@@ -1,0 +1,25 @@
+﻿@model ImageUploadViewModel
+@{
+    var uploadStage = Model.UploadStage;
+}
+
+@if (uploadStage == UploadStage.Upload)
+{
+    <h3>Upload file</h3>
+    <form enctype="multipart/form-data" method="post">
+        <dl>
+            <dt>
+                <label asp-for="Image"></label>
+            </dt>
+            <dd>
+                <input asp-for="Image" type="file">
+                <span asp-validation-for="Image"></span>
+            </dd>
+        </dl>
+        <input asp-page-handler="Upload" class="btn" type="submit" value="Upload" />
+    </form>
+}
+else
+{
+    <h3>Upload completed</h3>
+}
